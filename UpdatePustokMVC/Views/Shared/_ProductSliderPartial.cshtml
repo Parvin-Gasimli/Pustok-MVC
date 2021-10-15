@@ -1,0 +1,60 @@
+﻿@model ICollection<Product>
+
+@foreach (Product item in Model)
+{
+    <div class="single-slide">
+        <div class="product-card">
+            <div class="product-header">
+                <a href="#" class="author">
+                    @item.Author.Name
+                </a>
+                <h3>
+                    <a href="product-details.html">
+                        @item.Title
+                    </a>
+                </h3>
+            </div>
+            <div class="product-card--body">
+                <div class="card-image">
+                    <img src="~/image/products/@item.Images" alt="">
+                    <div class="hover-contents">
+                        <a href="product-details.html" class="hover-image">
+                            <img src="~/image/products/@item.HovImages" alt="">
+                        </a>
+                        <div class="hover-btns">
+                            <a href="cart.html" class="single-btn">
+                                <i class="fas fa-shopping-basket"></i>
+                            </a>
+                            <a href="wishlist.html" class="single-btn">
+                                <i class="fas fa-heart"></i>
+                            </a>
+                            <a href="compare.html" class="single-btn">
+                                <i class="fas fa-random"></i>
+                            </a>
+                            <a asp-controller="Product" asp-action="GetDetail" asp-route-Id="@item.Id" data-toggle="modal" data-target="#quickModal"
+                               class="single-btn" id="Product-Detail">
+                                <i class="fas fa-eye"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="price-block">
+                    @if (item.Discountprice != null)
+                    {
+                        <span class="price">£@item.Discountprice?.ToString("f2")</span>
+                        <del class="price-old">
+                            £@item.Price?.ToString("F2")
+                        </del>
+                        <span class="price-discount">@((int)(100-(item.Discountprice/item.Price)*100))%</span>
+                    }
+                    else
+                    { <span class="price">£@item.Price</span>
+
+
+                }
+
+                </div>
+            </div>
+        </div>
+    </div>
+}

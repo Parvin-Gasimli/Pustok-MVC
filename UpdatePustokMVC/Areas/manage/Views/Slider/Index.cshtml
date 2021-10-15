@@ -1,0 +1,55 @@
+﻿@model ICollection<Slider>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h3 class="mb-4">Slider Page </h3>
+
+<div class="d-flex justify-content-between mb-5">
+    <a class="btn btn-primary d-flex justify-content-center " asp-action="Create">
+        Create
+    </a>
+</div>
+<table class="table table-striped table-hover">
+    <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Image</th>
+            <th scope="col">Text</th>
+            <th scope="col">Name</th>
+            <th scope="col">Settings</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (Slider item in Model)
+        {
+        <tr>
+            <th scope="row">@item.Id</th>
+            <td>
+                <img style="width:200px;height:200px; border-radius:50%" src="~/image/bg-images/@item.Images" />
+            </td>
+            <td>@Html.Raw(item.Text)</td>
+            <td>@item.Desc</td>
+            <td>@item.Price</td>
+
+            <td>
+                <a class="btn btn-primary"  asp-route-Id="@item.Id" asp-action="Detail">
+                    Detail
+                </a>
+                <a class="btn btn-dark" asp-route-Id="@item.Id" asp-action="Update">
+                    Update
+
+                </a>
+                <a class="btn btn-danger" asp-route-Id="@item.Id" asp-action="Delete">
+                    Delete
+
+                </a>
+            </td>
+        </tr>
+        }
+
+
+    </tbody>
+</table>
+

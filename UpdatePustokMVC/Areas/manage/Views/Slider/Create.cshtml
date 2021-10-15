@@ -1,0 +1,49 @@
+﻿@model Slider
+@{
+    ViewData["Title"] = "Create";
+}
+
+<form method="post" enctype="multipart/form-data" >
+    <div class="mb-3">
+        <label asp-for="Text">Text</label>
+        <div class="col-sm-10">
+            <input class="form-control" asp-for="Text">
+            <span asp-validation-for="Text"> </span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Desc">Desc</label>
+        <div class="col-sm-10">0
+            <input class="form-control" asp-for="Desc">
+            <span class="alert-danger" asp-validation-for="Desc"> </span>
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Price">price</label>
+        <div class="col-sm-10">
+            <input class="form-control"  asp-for="Price">
+            <span class="alert-danger" asp-validation-for="Price"> </span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="Order">Order</label>
+        <div class="col-sm-10">
+            <input class="form-control"  asp-for="Order">
+            <span class="alert-danger" asp-validation-for="Order"> </span>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label asp-for="File">File</label>
+        <div class="col-sm-10">
+            <input class="form-control" accept="image/*"  asp-for="File" >
+            <span class="alert-danger"  asp-validation-for="File"> </span>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">
+        Submit
+    </button>
+
+</form>
+
+
